@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
       login!(@user)
       redirect_to user_url(@user)
     else
+      @user.save!
       render :new
     end
   end
