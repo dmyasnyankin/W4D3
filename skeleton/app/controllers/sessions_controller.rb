@@ -10,15 +10,16 @@ class SessionsController < ApplicationController
     
     if @user
       login!(@user)
-      redirect_to user_url(@user)
+      redirect_to cats_url
     else
-      @user.save!
-      render :new
+      flash[:errors] = ["Invalid Credentials brahhhhh"]
+      redirect_to new_session_url
     end
   end
   
   def destroy
-    
+    logout!
+    redirect_to new_session_url
   end
   
   private
